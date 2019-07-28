@@ -29,7 +29,6 @@ public class TweetRouter extends RouteBuilder {
     public void configure() throws Exception {
         String uri = timelineUserUri();
         from(uri)
-                .log("Tweet received: ${body}")
                 .process( exchange -> {
                     Status status = exchange.getIn().getBody(Status.class);
                     exchange.getIn().setBody(status);

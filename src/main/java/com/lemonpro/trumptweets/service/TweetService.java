@@ -10,10 +10,11 @@ import twitter4j.User;
 public class TweetService {
 
     public void showTweet(Status status) {
+        log.info(status.toString());
         User user = status.getUser();
         String name = user.getName();
         String text = status.getText();
         String screenName = user.getScreenName();
-        log.info(text);
+        int retweetCount = status.getRetweetCount();
     }
 }
