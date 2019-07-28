@@ -1,0 +1,9 @@
+version: "2"
+
+services:
+  routes:
+    build: .
+    ports:
+      - "8888:8888"
+    env_file:
+      - env.list

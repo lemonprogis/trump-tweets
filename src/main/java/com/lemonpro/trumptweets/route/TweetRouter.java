@@ -14,7 +14,7 @@ public class TweetRouter extends RouteBuilder {
     private final TwitterProperties twitterProperties;
 
     private String timelineUserUri() {
-        return String.format("twitter-timeline://user?user=%s&type=%s&delay=%s" +
+        return String.format("twitter-timeline://user?user=%s&type=%s&delay=%s&filterOld=true" +
                         "&consumerKey=%s&consumerSecret=%s&accessToken=%s&accessTokenSecret=%s",
                 twitterProperties.getUsername(),
                 twitterProperties.getType(),
@@ -29,6 +29,7 @@ public class TweetRouter extends RouteBuilder {
     public void configure() throws Exception {
         String uri = timelineUserUri();
         from(uri)
+                .streamCaching()
                 .process( exchange -> {
                     Status status = exchange.getIn().getBody(Status.class);
                     exchange.getIn().setBody(status);

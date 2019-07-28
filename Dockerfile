@@ -7,6 +7,13 @@ RUN mvn -f ./pom.xml clean package
 
 FROM openjdk:8-jdk-alpine
 LABEL maintainer="Ed Briggler <edward.briggler@gmail.com>"
+
+ENV TWITTER_CONSUMER_KEY=changeme
+ENV TWITTER_CONSUMER_SECRET=changeme
+ENV TWITTER_ACCESS_TOKEN=changeme
+ENV TWITTER_ACCESS_TOKEN_SECRET=changeme
+
+
 VOLUME /tmp
 RUN addgroup -g 1001 -S appuser && adduser -u 1001 -S appuser -G appuser
 USER appuser
