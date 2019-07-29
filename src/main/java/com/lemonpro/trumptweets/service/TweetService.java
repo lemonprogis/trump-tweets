@@ -12,9 +12,13 @@ public class TweetService {
     public void showTweet(Status status) {
         log.info(status.toString());
         User user = status.getUser();
+        int followersCount = user.getFollowersCount();
         String name = user.getName();
         String text = status.getText();
         String screenName = user.getScreenName();
         int retweetCount = status.getRetweetCount();
+
+
+
     }
 }
